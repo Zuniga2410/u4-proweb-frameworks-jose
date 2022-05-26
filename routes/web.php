@@ -1,6 +1,6 @@
 <?php
-
-use	App\Http\controllers\AlumnoController;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\AutorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Router::resource(‘alumnos’,AlumnoController::class);
+Route::resource('Libros',LibroController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::resource('autors',AutorController::class);
+
 
 Auth::routes();
 

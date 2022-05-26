@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alumno;
+use App\Models\Autor;
 use Illuminate\Http\Request;
 
 /**
- * Class AlumnoController
+ * Class AutorController
  * @package App\Http\Controllers
  */
-class AlumnoController extends Controller
+class AutorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::paginate();
+        $autors = Autor::paginate();
 
-        return view('alumno.index', compact('alumnos'))
-            ->with('i', (request()->input('page', 1) - 1) * $alumnos->perPage());
+        return view('autor.index', compact('autors'))
+            ->with('i', (request()->input('page', 1) - 1) * $autors->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        $alumno = new Alumno();
-        return view('alumno.create', compact('alumno'));
+        $autor = new Autor();
+        return view('autor.create', compact('autor'));
     }
 
     /**
@@ -43,12 +43,12 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Alumno::$rules);
+        request()->validate(Autor::$rules);
 
-        $alumno = Alumno::create($request->all());
+        $autor = Autor::create($request->all());
 
-        return redirect()->route('alumnos.index')
-            ->with('success', 'Alumno created successfully.');
+        return redirect()->route('autors.index')
+            ->with('success', 'Autor created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        $alumno = Alumno::find($id);
+        $autor = Autor::find($id);
 
-        return view('alumno.show', compact('alumno'));
+        return view('autor.show', compact('autor'));
     }
 
     /**
@@ -72,26 +72,26 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
-        $alumno = Alumno::find($id);
+        $autor = Autor::find($id);
 
-        return view('alumno.edit', compact('alumno'));
+        return view('autor.edit', compact('autor'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Alumno $alumno
+     * @param  Autor $autor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumno $alumno)
+    public function update(Request $request, Autor $autor)
     {
-        request()->validate(Alumno::$rules);
+        request()->validate(Autor::$rules);
 
-        $alumno->update($request->all());
+        $autor->update($request->all());
 
-        return redirect()->route('alumnos.index')
-            ->with('success', 'Alumno updated successfully');
+        return redirect()->route('autors.index')
+            ->with('success', 'Autor updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class AlumnoController extends Controller
      */
     public function destroy($id)
     {
-        $alumno = Alumno::find($id)->delete();
+        $autor = Autor::find($id)->delete();
 
-        return redirect()->route('alumnos.index')
-            ->with('success', 'Alumno deleted successfully');
+        return redirect()->route('autors.index')
+            ->with('success', 'Autor deleted successfully');
     }
 }

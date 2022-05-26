@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Alumno
+    Autor
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Alumno') }}
+                                {{ __('Autor') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('alumnos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('autors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,28 +36,30 @@
                                     <tr>
                                         <th>No</th>
                                         
+										<th>Codigo</th>
 										<th>Nombre</th>
 										<th>Apellidos</th>
-										<th>Carrera</th>
-										<th>Promedio</th>
+										<th>Telefono</th>
+										<th>Direccion</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($alumnos as $alumno)
+                                    @foreach ($autors as $autor)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $alumno->nombre }}</td>
-											<td>{{ $alumno->apellidos }}</td>
-											<td>{{ $alumno->carrera }}</td>
-											<td>{{ $alumno->promedio }}</td>
+											<td>{{ $autor->codigo }}</td>
+											<td>{{ $autor->nombre }}</td>
+											<td>{{ $autor->apellidos }}</td>
+											<td>{{ $autor->telefono }}</td>
+											<td>{{ $autor->direccion }}</td>
 
                                             <td>
-                                                <form action="{{ route('alumnos.destroy',$alumno->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('alumnos.show',$alumno->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('alumnos.edit',$alumno->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('autors.destroy',$autor->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('autors.show',$autor->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('autors.edit',$autor->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -70,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $alumnos->links() !!}
+                {!! $autors->links() !!}
             </div>
         </div>
     </div>

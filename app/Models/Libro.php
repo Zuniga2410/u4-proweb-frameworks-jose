@@ -5,27 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Alumno
+ * Class Libro
  *
  * @property $id
- * @property $nombre
- * @property $apellidos
- * @property $carrera
- * @property $promedio
+ * @property $codigo
+ * @property $titulo
+ * @property $editorial
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Alumno extends Model
+class Libro extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
-		'apellidos' => 'required',
-		'carrera' => 'required',
-		'promedio' => 'required',
+		'codigo' => 'required',
+		'titulo' => 'required',
+		'editorial' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,7 +33,7 @@ class Alumno extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','apellidos','carrera','promedio'];
+    protected $fillable = ['codigo','titulo','editorial'];
 
 
 
